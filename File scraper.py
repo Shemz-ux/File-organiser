@@ -4,23 +4,23 @@
 # - Scan the downloads folder for files
 # - Identifying files based on its type zip files, music projects, adobe projects, and more).
 # - Move the files into categorized folders (e.g., "Images", "Documents") based on file extensions.
-
 import os
 import shutil
 
 folder_categories = {
-    "Images": [".jpg", ".jpeg", ".png", ".gif", ".bmp"],
-    "Documents": [".pdf", ".docx", ".txt", ".xlsx", ".pptx"],
-    "Creative": [".ai", ".psd", ".prt" ".aep"],
-    "Music creation": [".logicx", ".flp", ".band"],
+    "Images": [".jpg", ".jpeg", ".png", ".gif", ".bmp", ".HEIC", ".avif"],
+    "Documents": [".pdf", ".docx", ".txt", ".xlsx", ".pptx", ".csv", ".dotx"],
+    "Creative": [".ai", ".psd", ".prt", ".aep", ".fig"],
+    "Music creation": [".logicx", ".flp", ".band", ".convert"],
     "Audio": [".mp3", ".wav", ".aac"],
     "Videos": [".mp4", ".mov", ".avi"],
     "Archives": [".zip", ".rar", ".tar", ".gz"],
     "Scripts": [".py", ".js", ".html", ".css"],
     "Disk images": [".dmg"],
     "Fonts": [".ttf", ".otf", ".otc", ".ttc"],
-        }
-
+    "Other": []
+}
+        
 downloads_folder = os.path.join(os.path.expanduser("~"), "Downloads")
 
 # Creating folders to contain files
@@ -33,9 +33,9 @@ def create_folders():
 # Organising the files by their extension
 def organise_files(filename):
     # _, what is this underscore for?
-    _, extension = os.path.splitext(filename) 
+    name, extension = os.path.splitext(filename) 
     for category, extensions in folder_categories.items():
-        if extension.lower() in extensions:
+        if extension in extensions:
             return category
     return "Other"
 
@@ -52,7 +52,7 @@ def move_files():
         destination_folder = os.path.join(downloads_folder, category)
 
         shutil.move(file_path, os.path.join(destination_folder, filename))
-        # print(f"Moved: {filename} -> {category}")
+        print(f"Moved: {filename} -> {category}")
 
 def main():
     create_folders()
