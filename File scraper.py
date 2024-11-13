@@ -5,7 +5,6 @@
 # - Identifying files based on its type zip files, music projects, adobe projects, and more).
 # - Move the files into categorized folders (e.g., "Images", "Documents") based on file extensions.
 
-
 import os
 import shutil
 
@@ -34,7 +33,6 @@ def create_folders():
 
 # Organising the files by their extension
 def organise_files(filename):
-    # _, what is this underscore for?
     name, extension = os.path.splitext(filename) 
     for category, extensions in folder_categories.items():
         if extension in extensions:
