@@ -4,6 +4,7 @@
 # - Scan the downloads folder for files
 # - Identifying files based on its type zip files, music projects, adobe projects, and more).
 # - Move the files into categorized folders (e.g., "Images", "Documents") based on file extensions.
+
 import os
 import shutil
 
@@ -21,7 +22,7 @@ folder_categories = {
     "Other": []
 }
         
-downloads_folder = os.path.join(os.path.expanduser("~"), "Downloads")
+downloads_folder = os.path.join(os.path.expanduser("~"), "Downloads") #Defines the file path for us
 
 # Creating folders to contain files
 def create_folders():
@@ -39,13 +40,12 @@ def organise_files(filename):
             return category
     return "Other"
 
-# Move newly organised files to respective folders 
+# Move files to respective folders 
 def move_files(downloads_folder):
     for filename in os.listdir(downloads_folder):
         file_path = os.path.join(downloads_folder, filename)
 
         if os.path.isdir(file_path): 
-            # organise_files(file_path)#this the line that passes over 
             continue
 
         category = organise_files(filename)
