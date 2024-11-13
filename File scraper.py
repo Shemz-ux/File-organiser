@@ -5,7 +5,6 @@
 # - Identifying files based on its type zip files, music projects, adobe projects, and more).
 # - Move the files into categorized folders (e.g., "Images", "Documents") based on file extensions.
 
-#Hello world 
 
 import os
 import shutil
