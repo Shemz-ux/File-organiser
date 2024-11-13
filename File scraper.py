@@ -11,11 +11,11 @@ folder_categories = {
     "Images": [".jpg", ".jpeg", ".png", ".gif", ".bmp", ".HEIC", ".avif"],
     "Documents": [".pdf", ".docx", ".txt", ".xlsx", ".pptx", ".csv", ".dotx"],
     "Creative": [".ai", ".psd", ".prt", ".aep", ".fig"],
-    "Music creation": [".logicx", ".flp", ".band", ".convert"],
+    "Music creation": [".logicx", ".flp", ".band", ".concert"],
     "Audio": [".mp3", ".wav", ".aac"],
     "Videos": [".mp4", ".mov", ".avi"],
     "Archives": [".zip", ".rar", ".tar", ".gz"],
-    "Scripts": [".py", ".js", ".html", ".css"],
+    "Scripts": [".py", ".js", ".html", ".css", ".ipynb"],
     "Disk images": [".dmg"],
     "Fonts": [".ttf", ".otf", ".otc", ".ttc"],
     "Other": []
@@ -39,16 +39,16 @@ def organise_files(filename):
             return category
     return "Other"
 
-# Move newly organised files to respective folders
-def move_files():
+# Move newly organised files to respective folders 
+def move_files(downloads_folder):
     for filename in os.listdir(downloads_folder):
         file_path = os.path.join(downloads_folder, filename)
 
-        if os.path.isdir(file_path):
+        if os.path.isdir(file_path): 
+            # organise_files(file_path)#this the line that passes over 
             continue
 
         category = organise_files(filename)
-
         destination_folder = os.path.join(downloads_folder, category)
 
         shutil.move(file_path, os.path.join(destination_folder, filename))
@@ -57,7 +57,7 @@ def move_files():
 def main():
     create_folders()
 
-    move_files()
+    move_files(downloads_folder)
 
     print("Download folder organised successfully!")
 
