@@ -35,7 +35,7 @@ def create_folders():
 def organise_files(filename):
     name, extension = os.path.splitext(filename) 
     for category, extensions in folder_categories.items():
-        if extension in extensions:
+        if extension.lower() in extensions:
             return category
     return "Other"
 
@@ -63,9 +63,7 @@ def main():
 if __name__ == "__main__":
     main()
 
-# Run this in terminal python file_organizer.py
-
-# rm -rf .git // to remove git !
+# Run this in terminal python file\ scraper.py
 
 # Additional features to add:
 # - Date-based Folders: Organize by date as well as type (e.g., Images/2024).
